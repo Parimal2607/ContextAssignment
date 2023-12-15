@@ -15,8 +15,7 @@ import { Icon } from "@iconify/react";
 import { GlobalInfo } from "./MainSection";
 function EditInfoModal({ userId }) {
   const [modal, setModal] = useState(false);
-  //   const [modalData, setModalData] = useState({});
-  const { data, modalData, setModalData, setData } = useContext(GlobalInfo);
+  const { data, modalData, setModalData, handleUpdateData } = useContext(GlobalInfo);
   const toggle = () => {
     data.filter((user) => {
       if (user.id === userId) {
@@ -32,13 +31,11 @@ function EditInfoModal({ userId }) {
       [name]: value,
     }));
   };
-  const handleUpdateData = () => {
-    const tempArr = [...data];
-    const index = data.findIndex((user) => user.id === userId);
-    tempArr[index] = modalData;
-    setData(tempArr);
-    toggle();
-  };
+  const handleToggle = () =>{
+    handleUpdateData(userId)
+    toggle()
+  }
+ ;
   return (
     <>
       <Icon icon="circum:edit" onClick={toggle} />
@@ -103,7 +100,7 @@ function EditInfoModal({ userId }) {
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={handleUpdateData}>
+          <Button color="primary" onClick={handleToggle}>
             Update
           </Button>{" "}
           <Button color="secondary" onClick={toggle}>

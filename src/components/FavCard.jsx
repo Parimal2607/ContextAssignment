@@ -3,7 +3,7 @@ import { Col, Row } from "reactstrap";
 import CardFooter from "./CardFooter";
 import { GlobalInfo } from "./MainSection";
 import UserInfo from "./UserInfo";
-const MainCard = () => {
+const FavCard = () => {
   const { data } = useContext(GlobalInfo);
   return (
     <Row className="gy-4">
@@ -33,4 +33,4 @@ const MainCard = () => {
   );
 };
 
-export default MainCard;
+export default FavCard;
